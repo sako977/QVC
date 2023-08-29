@@ -1,0 +1,14 @@
+C:\Users\skla\source\repos\QVC\UsersGroupsData\bin\Debug\net7.0\UsersGroupsData.deps.json
+C:\Users\skla\source\repos\QVC\UsersGroupsData\bin\Debug\net7.0\UsersGroupsData.dll
+C:\Users\skla\source\repos\QVC\UsersGroupsData\bin\Debug\net7.0\UsersGroupsData.pdb
+C:\Users\skla\source\repos\QVC\UsersGroupsData\obj\Debug\net7.0\UsersGroupsData.csproj.AssemblyReference.cache
+C:\Users\skla\source\repos\QVC\UsersGroupsData\obj\Debug\net7.0\UsersGroupsData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\skla\source\repos\QVC\UsersGroupsData\obj\Debug\net7.0\UsersGroupsData.AssemblyInfoInputs.cache
+C:\Users\skla\source\repos\QVC\UsersGroupsData\obj\Debug\net7.0\UsersGroupsData.AssemblyInfo.cs
+C:\Users\skla\source\repos\QVC\UsersGroupsData\obj\Debug\net7.0\UsersGroupsData.csproj.CoreCompileInputs.cache
+C:\Users\skla\source\repos\QVC\UsersGroupsData\obj\Debug\net7.0\UsersGroupsData.dll
+C:\Users\skla\source\repos\QVC\UsersGroupsData\obj\Debug\net7.0\refint\UsersGroupsData.dll
+C:\Users\skla\source\repos\QVC\UsersGroupsData\obj\Debug\net7.0\UsersGroupsData.pdb
+C:\Users\skla\source\repos\QVC\UsersGroupsData\obj\Debug\net7.0\ref\UsersGroupsData.dll
+C:\Users\skla\source\repos\QVC\UsersGroupsData\bin\Debug\net7.0\UsersGroupsData.runtimeconfig.json
+C:\Users\skla\source\repos\QVC\UsersGroupsData\obj\Debug\net7.0\UsersGroupsData.genruntimeconfig.cache
