@@ -14,7 +14,15 @@
         <p>Age:</p>
         <input type="number" style="margin: 1px 0 2px" name="age" /><br />
         <p>Email:</p>
-        <input type="email" style="margin: 1px 0 2px" name="email" /><br />
+        <input type="email" style="margin: 1px 0 2px" name="email" />
         <input type="submit" value="Create" />
     </div>
 </form>
+
+<p>
+    @if (ViewBag.Submitted)
+    {
+        @ViewBag.Message // If the form was submitted
+    }
+
+</p>

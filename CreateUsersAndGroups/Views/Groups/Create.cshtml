@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<UsersGroupsData.DBModels.User>
+
+@{
     ViewData["Title"] = "Create Group";
 }
 
@@ -9,7 +11,26 @@
 <form method="post" style="margin: 5% 0 0">
     <div class="newGroup">
         <p>Group Name:</p>
-        <input type="text" style="margin: 1px 0 2px" name="groupName" /><br/>
+        <input type="text" style="margin: 1px 0 2px" name="groupName" /> <br />
+        <label for="members">Add group members:</label><br/>
+        <select name="members" id="members" multiple>
+        @if (Model != null && Model.Count() > 0)
+        {
+            foreach (var user in Model)
+            {
+                <option value="@user.UserId">@(user.FirstName + " " +user.LastName)</option>
+            }
+        }
+        </select><br>
+
         <input type="submit" value="Create" />
     </div>
 </form>
+
+<p>
+    @if (ViewBag.Submitted)
+    {
+        @ViewBag.Message // If the form was submitted
+    }
+
+</p>

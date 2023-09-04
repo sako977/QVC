@@ -1,8 +1,33 @@
-﻿@{
+﻿@model IEnumerable<GroupViewModel>
+
+@{
     ViewData["Title"] = "Groups";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Groups</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h3>Following table shows the groups detail</h3>
+<p>You can also create a new user <a href="~/Groups/Create">here</a>. </p>
+
+<table class="groups-table">
+    <tr>
+        <th>Id</th>
+        <th>Group Name</th>
+        <th>Group Members</th>
+    </tr>
+
+    @if (Model != null && Model.Count() > 0)
+    {
+        foreach (var user in Model)
+        {
+            // Create the list of these groups
+            <tr>
+                <td>@user.GroupId</td>
+                <td>@user.GroupName</td>
+                @if (user.GroupUsers != null)
+                {
+                    <td>@string.Join(", ", user.GroupUsers.Select(x => x.FirstName + " " + x.LastName).ToList())</td>
+                }
+
+            </tr>
+        }
+    }
+</table>
