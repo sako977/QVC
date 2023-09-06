@@ -10,14 +10,16 @@ namespace CreateUsersAndGroups.Controllers
     [ApiController]
     public class GroupsController : Controller
     {
-        public GroupsController()
+        private readonly UsersGroupsData.AppContext _dbContext;
+        public GroupsController(UsersGroupsData.AppContext appContext)
         {
+            _dbContext = appContext;
         }
 
         public IActionResult Index()
         {
             List<GroupViewModel> groupsView = new List<GroupViewModel>();
-            List<Group> groups = HomeController._dbContext.Groups.Include(x => x.GroupMembers).ToList();
+            List<Group> groups = _dbContext.Groups.Include(x => x.GroupMembers).ToList();
 
             foreach (Group group in groups)
             {
@@ -28,7 +30,7 @@ namespace CreateUsersAndGroups.Controllers
                   GroupUsers = new List<User>(),
                 };
 
-                List<User> users = HomeController._dbContext.Users.Select(x => x).Where( x =>  group.GroupMembers.Select(z => z.GroupId).Contains(x.UserId)).ToList();
+                List<User> users = _dbContext.Users.Select(x => x).Where( x =>  group.GroupMembers.Select(z => z.GroupId).Contains(x.UserId)).ToList();
                 g.GroupUsers.AddRange(users);
                 groupsView.Add(g);
             }
@@ -50,7 +52,7 @@ namespace CreateUsersAndGroups.Controllers
                 if (string.IsNullOrWhiteSpace(groupName))
                     throw new Exception("Please make sure group name is populated.");
 
-                if (HomeController._dbContext.Groups.Select(x => x.GroupName == groupName) != null)
+                if (_dbContext.Groups.Select(x => x.GroupName == groupName) != null)
                 {
                     throw new Exception($"Group with the name {groupName} already exists.");
                 }
@@ -60,8 +62,8 @@ namespace CreateUsersAndGroups.Controllers
                     GroupName = groupName,
                 };
 
-                HomeController._dbContext.Add(newGroup);
-                if (HomeController._dbContext.SaveChanges() > 0)
+                _dbContext.Add(newGroup);
+                if (_dbContext.SaveChanges() > 0)
                 {
                     foreach (string memberid in members)
                     {
@@ -70,10 +72,10 @@ namespace CreateUsersAndGroups.Controllers
                             GroupId = newGroup.GroupId,
                             UserId = Convert.ToInt32(memberid)
                         };
-                        HomeController._dbContext.Add(groupMember);
+                        _dbContext.Add(groupMember);
                     }
 
-                    if (HomeController._dbContext.SaveChanges() > 0)
+                    if (_dbContext.SaveChanges() > 0)
                     {
                         ViewBag.Message = " The group was created successfully.";
                     }
@@ -86,7 +88,7 @@ namespace CreateUsersAndGroups.Controllers
                 return View();
             }
 
-            var allUsers = HomeController._dbContext.Users.Select(x => x).ToList();
+            var allUsers = _dbContext.Users.Select(x => x).ToList();
             return View(allUsers);
         }
     }

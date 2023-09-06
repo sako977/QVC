@@ -8,15 +8,16 @@ namespace CreateUsersAndGroups.Controllers
    [ApiController]
    public class UsersController : Controller
    {
-        public UsersController()
+        private readonly UsersGroupsData.AppContext _dbContext;
+        public UsersController(UsersGroupsData.AppContext appContext)
         {
-
+            _dbContext = appContext;
         }
 
         public IActionResult Index()
         {
             // Load the data for the client
-            var users = HomeController._dbContext.Users.Select(x => x).ToList();
+            var users = _dbContext.Users.Select(x => x).ToList();
 
             // Return the view.
             return View(users);
@@ -58,8 +59,8 @@ namespace CreateUsersAndGroups.Controllers
                     LastName = surname,
                 };
 
-                HomeController._dbContext.Add(newUser);
-                if (HomeController._dbContext.SaveChanges() > 0)
+                _dbContext.Add(newUser);
+                if (_dbContext.SaveChanges() > 0)
                 {
                     ViewBag.Message = " The user was created successfully.";
                 }

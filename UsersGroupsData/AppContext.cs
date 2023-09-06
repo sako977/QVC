@@ -5,14 +5,14 @@ namespace UsersGroupsData
 {
    public class AppContext : DbContext
    {
+      public AppContext(DbContextOptions<AppContext> options) : base(options)
+      {    
+      }
+
       public DbSet<User> Users { get; set; }
       public DbSet<Group> Groups { get; set; }
       public DbSet<GroupMember> GroupMembers { get; set; }
 
-      protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-      {
-         optionsBuilder.UseSqlServer($"Data Source=sako-pc;Initial Catalog=qvcDB;Integrated Security=True;TrustServerCertificate=True");
-      }
       protected override void OnModelCreating(ModelBuilder modelBuilder)
       {
          modelBuilder.Entity<User>().ToTable("Users");

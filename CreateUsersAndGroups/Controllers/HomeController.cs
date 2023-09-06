@@ -9,8 +9,6 @@ namespace CreateUsersAndGroups.Controllers
    [ApiController]
    public class HomeController : Controller
    {
-      public static UsersGroupsData.AppContext _dbContext = new UsersGroupsData.AppContext();
-
       public HomeController()
       {
       }

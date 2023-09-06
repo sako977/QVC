@@ -19,5 +19,7 @@ namespace UsersGroupsData.DBModels
       public required string Email { get; set; }
 
       public required ushort Age { get; set; }
-   }
+
+      public virtual ICollection<GroupMember> GroupMembers { get; set; }
+    }
 }
